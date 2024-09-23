@@ -1,6 +1,5 @@
 package com.example.chat_dev.common.config;
 
-import com.example.chat_dev.chat.component.WebSocketAuthInterceptor;
 import com.example.chat_dev.chat.handler.WebSocketHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;

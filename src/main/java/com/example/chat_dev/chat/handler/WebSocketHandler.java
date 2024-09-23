@@ -1,8 +1,5 @@
 package com.example.chat_dev.chat.handler;
 
-import com.example.chat_dev.chat.component.ChatRoom;
-import com.example.chat_dev.chat.dto.ChatDto;
-import com.example.chat_dev.common.config.WebSocketMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,9 @@
 package com.example.chat_dev.chat.domain;
 
-import com.example.chat_dev.common.domain.BaseTimeEntity;
-import com.example.chat_dev.user.domain.User;
+import com.example.exodia.common.domain.BaseTimeEntity;
+import com.example.exodia.user.domain.User;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Where;
@@ -10,9 +11,10 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Where(clause = "del_yn = 'N'")
 public class ChatUser extends BaseTimeEntity {
 
@@ -20,12 +22,13 @@ public class ChatUser extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 채팅유저고유의 id
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "chat_room_id", nullable = false)
     private ChatRoom chatRoom;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user; // 사번
-
 }

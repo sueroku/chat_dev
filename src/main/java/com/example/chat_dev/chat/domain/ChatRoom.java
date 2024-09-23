@@ -1,7 +1,8 @@
 package com.example.chat_dev.chat.domain;
 
-import com.example.chat_dev.common.domain.BaseTimeEntity;
+import com.example.exodia.common.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Where;
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Where(clause = "del_yn = 'N'")
-public class ChatRoom extends BaseTimeEntity{
-
+public class ChatRoom extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 채팅방 고유의 id
@@ -24,13 +25,12 @@ public class ChatRoom extends BaseTimeEntity{
     @Column(nullable = false)
     private String roomName;
 
-    @OneToMany(mappedBy = "chat_room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
     private List<ChatUser> chatUsers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chat_room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
     private List<ChatMessage> chatMessages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chat_room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
     private List<ChatFile> chatFiles = new ArrayList<>();
-
 }
